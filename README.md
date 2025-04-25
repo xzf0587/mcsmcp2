@@ -21,9 +21,7 @@ So, MCP and connectors are really **better together**.
 - Azure Subscription (with payment method added)
 - Have a GitHub account and be logged in
 - Copilot Studio trial or developer account
-- Power Platform Environment provisioned with the following toggle on:
-
-    ![Get new features early toggle](./assets/newfeatures.png)
+- Power Platform environment provisioned
 
 ## Lab
 
@@ -208,10 +206,7 @@ Now you have an MCP Server running in Azure, and a connector available in the Po
 
 1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
 1. Select the environment picker at the top right corner
-1. Select the right environment (this environment needs to have the `Get new features early` toggle on)
-
-    This will change the URL to `https://copilotstudio.preview.microsoft.com/....` which indicates you're on the right environment
-
+1. Select the right environment
 1. Select `Create` in the left navigation
 1. Select the blue `New agent` button
 
