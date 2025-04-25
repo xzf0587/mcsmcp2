@@ -384,6 +384,10 @@ This tool retrieves a random Dad Joke from [icanhazdadjoke.com](https://icanhazd
 
 This tool retrieves a random Yo Mama Joke from [yomama-jokes.com](https://www.yomama-jokes.com).
 
+## Known issues and planned improvements
+
+There are some known issues and planned improvements for MCP in Microsoft Copilot Studio. They are listed in [this Microsoft Learn article](https://aka.ms/mcsmcpdocs#known-issues--planned-improvements).
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
