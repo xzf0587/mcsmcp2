@@ -359,6 +359,10 @@ With this MCP Server, you will able to fetch jokes from the following websites:
 - [icanhazdadjoke.com](https://icanhazdadjoke.com/)
 - [yomama-jokes.com](https://www.yomama-jokes.com)
 
+If you want to run the server locally, make sure to run `npm install` in the root of the repository.
+
+After that you can run `npm run build` to build the server and `npm start` to start the server.
+
 ## Tools
 
 The following tools are included:
