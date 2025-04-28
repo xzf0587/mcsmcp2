@@ -139,7 +139,7 @@ app.post("/jokes", async (req: Request, res: Response) => {
 });
 
 app.get("/", (_req, res) => {
-  res.send("Chuck Norris MCP is running!");
+  res.send("The Jokes MCP server is running!");
 });
 
 const PORT = process.env.PORT || 3001;
