@@ -352,7 +352,7 @@ And that was the Jokes MCP Server working in Microsoft Copilot Studio. This is a
 
 ## Jokes MCP Server details
 
-This is a [MCP](https://modelcontextprotocol.io/introduction) server built on the [TypeScript SDK](https://github.com/modelcontextprotocol/csharp-sdk).
+This is a [MCP](https://modelcontextprotocol.io/introduction) server built on the [TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk).
 
 With this MCP Server, you will able to fetch jokes from the following websites:
 - [chucknorris.io](https://api.chucknorris.io/)
