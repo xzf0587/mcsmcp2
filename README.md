@@ -19,8 +19,8 @@ So, MCP and connectors are really **better together**.
 ## ⚙️ Prerequisites
 
 - Visual Studio Code ([link](https://code.visualstudio.com/download))
-- Node v22 (ideally installed via [nvm for Windows](https://github.com/coreybutler/nvm-windows))
-- Git for Windows installed ([link](https://gitforwindows.org/))
+- Node v22 (ideally installed via [nvm for Windows](https://github.com/coreybutler/nvm-windows) or [nvm](https://github.com/nvm-sh/nvm))
+- Git installed ([link](https://git-scm.com/downloads))
 - Azure Developer CLI ([link](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd))
 - Azure Subscription (with payment method added)
 - GitHub account
