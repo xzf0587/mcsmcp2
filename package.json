@@ -1,22 +1,31 @@
 {
-  "name": "jokes-sse",
+  "name": "mcp-streamable-http",
   "version": "1.0.0",
-  "description": "Jokes MCP with SSE",
+  "main": "src/server.js",
   "type": "module",
-  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "ts-node-esm src/index.ts"
+    "start": "node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "build"
+  ],
+  "bin": {
+    "demo": "./dist/server.js"
+  },
+  "keywords": [ ],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.9.0",
+    "@modelcontextprotocol/sdk": "^1.11.1",
     "express": "^5.1.0",
-    "zod": "^3.24.2"
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
-    "typescript": "^5.3.3",
-    "ts-node": "^10.9.2"
+    "@types/node": "^22.15.17",
+    "typescript": "^5.8.3"
   }
 }
