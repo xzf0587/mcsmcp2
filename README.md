@@ -20,9 +20,10 @@ So, MCP and connectors are really **better together**.
 
 - Visual Studio Code ([link](https://code.visualstudio.com/download))
 - Node v22 (ideally installed via [nvm for Windows](https://github.com/coreybutler/nvm-windows))
-- GitHub account
+- Git for Windows installed ([link](https://gitforwindows.org/))
 - Azure Developer CLI ([link](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd))
 - Azure Subscription (with payment method added)
+- GitHub account
 - Copilot Studio trial or developer account
 - Power Platform environment provisioned - with the following toggle on:
 
@@ -58,7 +59,10 @@ To be able to deploy this MCP Server and use it in Microsoft Copilot Studio, you
 
 ### 🏃‍♀️ Run the MCP Server Locally
 
-1. Clone this repository
+1. Clone this repository by running the following command: 
+
+    `git clone https://github.com/microsoft/mcsmcp.git`
+
 1. Open Visual Studio Code and open the sample folder
 1. Open the terminal and navigate to the sample folder
 1. Run `npm install`
