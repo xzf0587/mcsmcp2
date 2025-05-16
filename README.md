@@ -32,10 +32,11 @@ So, MCP and connectors are really **better together**.
 
 To be able to deploy this MCP Server and use it in Microsoft Copilot Studio, you need to go through the following actions:
 
-- [Create a new GitHub repository based on the template](#create-a-new-github-repository-based-on-the-template)
-- [Run the MCP Server locally](#run-the-mcp-server-locally)
-- [Create the Power Platform Connector](#create-the-power-platform-connector)
-- [Add the MCP Server as an action in Microsoft Copilot Studio](#add-the-mcp-server-as-an-action-in-microsoft-copilot-studio)
+- ➕ [Create a new GitHub repository based on the template](#-create-a-new-github-repository-based-on-the-template)
+- 🏃‍♀️ [Run the MCP Server locally](#️-run-the-mcp-server-locally)
+- 🌎 [Host on Azure Container Apps](#-host-on-azure-container-apps)
+- 👨‍💻 [Use the Jokes MCP Server in Visual Studio Code / GitHub Copilot](#-use-the-jokes-mcp-server-in-visual-studio-code--github-copilot)
+- 👨‍💻 [Use the Jokes MCP Server in Microsoft Copilot Studio](#-use-the-jokes-mcp-server-in-microsoft-copilot-studio)
 
 ### ➕ Create a new GitHub repository based on the template
 
@@ -140,7 +141,7 @@ This should give you a response like this:
 
 Now you have added the `JokesMCP` server to Visual Studio Code!
 
-## 👨‍💻 Use the Events Management MCP Server in Microsoft Copilot Studio
+## 👨‍💻 Use the Jokes MCP Server in Microsoft Copilot Studio
 
 1. Go to https://make.preview.powerapps.com/customconnectors (make sure you’re in the correct environment) and click + New custom connector. 
 1. Select `Import from GitHub`
@@ -318,6 +319,6 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
 trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
+[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
