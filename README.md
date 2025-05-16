@@ -158,16 +158,15 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
 
 1. Change the **Connector Name** to something appropriate, like for instance `Jokes MCP` 
 1. Change the **Description** to something appropriate
-1. Paste your root URL (for instance `something-3000.something.devtunnels.ms` or `something.azurecontainerapps.io`) in the **Host** field 
+1. Paste your root URL (for instance `something-3000.something.devtunnels.ms` or `something.azurecontainerapps.io`) in the **Host** field
 1. Select **Create connector** 
 
     You may see a warning and an error upon creation – it should be resolved soon - but you can ignore it for now.
 
 1. Close the connector
-1. Go to https://copilotstudio.preview.microsoft.com/  
-1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
+1. Go to https://copilotstudio.preview.microsoft.com/
 1. Select the environment picker at the top right corner
-1. Select the right environment
+1. Select the right environment (the environment with the `Get new features early` toggle switched on)
 1. Select `Create` in the left navigation
 1. Select the blue `New agent` button
 
