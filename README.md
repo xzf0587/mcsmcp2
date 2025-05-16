@@ -34,8 +34,9 @@ So, MCP and connectors are really **better together**.
 To be able to deploy this MCP Server and use it in Microsoft Copilot Studio, you need to go through the following actions:
 
 - ➕ [Create a new GitHub repository based on the template](#-create-a-new-github-repository-based-on-the-template)
-- 🏃‍♀️ [Run the MCP Server locally](#️-run-the-mcp-server-locally)
-- 🌎 [Host on Azure Container Apps](#-host-on-azure-container-apps)
+- Next, a choice can be made between these:
+    - Option 1: 🏃‍♀️ [Run the MCP Server locally](#️-run-the-mcp-server-locally)
+    - Option 2: 🌎 [Host on Azure Container Apps](#-host-on-azure-container-apps)
 - 👨‍💻 [Use the Jokes MCP Server in Visual Studio Code / GitHub Copilot](#-use-the-jokes-mcp-server-in-visual-studio-code--github-copilot)
 - 👨‍💻 [Use the Jokes MCP Server in Microsoft Copilot Studio](#-use-the-jokes-mcp-server-in-microsoft-copilot-studio)
 
@@ -57,14 +58,21 @@ To be able to deploy this MCP Server and use it in Microsoft Copilot Studio, you
 > [!WARNING]  
 > After completing the steps in this lab, you will have an MCP Server running on Azure that is publicly available. Ideally, you don't want that. Make sure to run `azd down` after finishing the lab to delete all the resources from your Azure subscription.
 
-### 🏃‍♀️ Run the MCP Server Locally
+### ⚖️ Choice: Run the server locally or deploy to Azure
+
+Now you have a choice! You either deploy the server locally - or you can deploy it to Azure.
+
+There are a couple of steps that you need to do for both:
 
 1. Clone this repository by running the following command: 
 
     `git clone https://github.com/microsoft/mcsmcp.git`
 
-1. Open Visual Studio Code and open the sample folder
-1. Open the terminal and navigate to the sample folder
+1. Open Visual Studio Code and open the cloned folder
+1. Open the terminal and navigate to the cloned folder
+
+#### 🏃‍♀️ Run the MCP Server Locally
+
 1. Run `npm install`
 1. Run `npm run build && npm run start`
 
@@ -95,7 +103,10 @@ If all went well, you will see the following error message:
 
 Don't worry - this error message is nothing to be worried about!
 
-## 🌎 Host on Azure Container Apps
+#### 🌎 Deploy to Azure
+
+> [!IMPORTANT]
+> As listed in the [prerequisites](#️-prerequisites), the [Azure Developer CLI ](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd) needs to be installed on your machine for this part.
 
 Make sure to login to Azure Developer CLI if you haven't done that yet.
 
@@ -119,7 +130,7 @@ You should again see the following error:
 {"jsonrpc":"2.0","error":{"code":-32000,"message":"Method not allowed."},"id":null}
 ```
 
-## 👨‍💻 Use the Jokes MCP Server in Visual Studio Code / GitHub Copilot
+### 👨‍💻 Use the Jokes MCP Server in Visual Studio Code / GitHub Copilot
 
 To use the Jokes MCP Server, you need to use the URL of your server (can be either your devtunnel URL or your deployed Azure Container App) with the `/mcp` part at the end and add it as an MCP Server in Visual Studio Code.
 
@@ -145,7 +156,7 @@ This should give you a response like this:
 
 Now you have added the `JokesMCP` server to Visual Studio Code!
 
-## 👨‍💻 Use the Jokes MCP Server in Microsoft Copilot Studio
+### 👨‍💻 Use the Jokes MCP Server in Microsoft Copilot Studio
 
 1. Go to https://make.preview.powerapps.com/customconnectors (make sure you’re in the correct environment) and click + New custom connector. 
 1. Select `Import from GitHub`
