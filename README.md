@@ -104,7 +104,7 @@ Run the following command in the terminal:
 azd up
 ```
 
-After running the `azd up` command, it will take a couple of minutes before the server has been deployed. When it's done - you should be able to go to the URL that's listed at the end and add `/mcp` to the end of that URL. 
+For the unique environment name, enter `mcsmcplab` or something similar. Select the Azure Subscription to use and select a value for the location. After that, it will take a couple of minutes before the server has been deployed. When it's done - you should be able to go to the URL that's listed at the end and add `/mcp` to the end of that URL.
 
 ![Azd deploy server output](./assets/azd-deploy-server.png)
 
