@@ -46,7 +46,7 @@ So, MCP and connectors are really **better together**.
 
 ## ⚖️ Choice: Run the server locally or deploy to Azure
 
-Now you have a choice! You either deploy the server locally - or you can deploy it to Azure.
+Now you have a choice! You either run the server locally - or you can deploy it to Azure.
 
 There are a couple of steps that you need to do for both:
 
