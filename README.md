@@ -299,7 +299,7 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
 
     ![Dad joke](./assets/dadjoke.png)
 
-And that was the Jokes MCP Server working in Microsoft Copilot Studio. This is also the end of the lab! Hopefully you liked the lab. Please take the time to fill in our [feedback form](https://aka.ms/mcsmcp/lab/feedback).
+And that was the Jokes MCP Server working in Microsoft Copilot Studio.
 
 ## ❌ Remove the Azure resources
 
@@ -311,6 +311,10 @@ azd down
 This command will show you the resources that will be deleted and then ask you to confirm. Confirm with `y` and the resources will be deleted. This can take a couple of minutes, but at the end you will see a confirmation:
 
 ![resources deleted](./assets/azd-down-confirmation.png)
+
+## 🗣️ Feedback
+
+Hopefully you liked the lab. Please take the time to fill in our [feedback form](https://aka.ms/mcsmcp/lab/feedback) to tell us how we can improve!
 
 ## 💡 Known issues and planned improvements
 
