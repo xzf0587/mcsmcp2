@@ -151,7 +151,7 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
 
 ## 👨‍💻 Use the Jokes MCP Server in Microsoft Copilot Studio
 
-1. Go to https://make.preview.powerapps.com/customconnectors (make sure you’re in the correct environment) and click + New custom connector. 
+1. Go to https://make.preview.powerapps.com/customconnectors (make sure you’re in the correct environment) and click **+ New custom connector**. 
 1. Select `Import from GitHub`
 1. Select `Custom` as **Connector Type**
 1. Select `dev` as the **Branch**
@@ -176,9 +176,9 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
 
     ![New agent](./assets/newagent.png)
 
-1. Select `Skip to configure` on the top right
+1. Select the `Configure` tab on the left
 
-    ![Skip to configure](./assets/skiptoconfigure.png)
+    ![Configure](./assets/configure.png)
 
 1. Change the name to `Jokester`
 1. Add the following `Description`
@@ -203,9 +203,9 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
     * Be responsive, witty, and quick.
     ```
 
-1. Select `Create` on the top right
+1. Select `Continue` on the top right
 
-    ![Create agent](./assets/createagent.png)
+    ![Click continue to create agent](./assets/continue.png)
 
 1. Enable Generative AI `Orchestration`
 
@@ -215,34 +215,31 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
 
     ![Turn off general knowledge](./assets/turnoffgeneralknowledge.png)
 
-1. Select `Actions` in the top menu
+1. Select `Tools` in the top menu
  
-    ![Actions](./assets/actions.png)
+    ![Tools](./assets/tools.png)
 
-1. Select `Add an action`
+1. Select `Add a tool`
 
-    ![Add an action](./assets/addanaction.png)
+    ![Add a tool](./assets/addatool.png)
 
-1. Search for the name (in this case, `jokes`) of the connector you created [earlier](#create-the-power-platform-connector) (see number 1 in the screenshot below)
-1. Select the `Jokes MCP server` (see number 2 in the screenshot below)
+1. Select the `Model Context Protocol` tab to filter all the Model Context Protocol Servers (see number 1 in the screenshot below)
 
-    ![Search for and select the action](./assets/addaction.png)
+1. Select the `Jokes MCP` server (see number 2 in the screenshot below)
 
-1. Wait for the connection to be created and select `Next` when it's done
+    ![MCP](./assets/mcpsteps.png)
 
-    ![Action and connection](./assets/actionconnection.png)
+1. Create a new connection by selecting the `Not connected` and **Create new Connection**
 
-1. Change the `Description for the agent to know when to use this action` to the following text:
+    ![Action and connection](./assets/create-connection-action.png)
 
-    ```text
-    Trigger this action when a user asks for a joke. It can provide Chuck Norris jokes, Dad jokes and Yo Mama jokes.
-    ```
-  
-    Leave the rest as default, like for instance end user authentication, where you will learn more about in a minute.
+1. Select `Create`
 
-1. Select `Add action` to add the action to the agent
+    ![Create connection](./assets/create-connection-action-create.png)
 
-    ![Add action](./assets/addactionend.png)
+1. Select `Add to agent` to add the tool to the agent
+
+    ![Add tool to agent](./assets/add-tool-to-agent.png)
 
 1. Select the `refresh icon` in the `Test your agent` pane
 
@@ -288,7 +285,7 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
     Can I get a Chuck Norris joke?
     ```
 
-    This will now show a Chuck Norris joke - instead of the additional permissions.
+    This will now show a Chuck Norris joke - instead of the additional permissions. If that's not the case - you probably have missed the [prerequisite](#️-prerequisites) that the environment needs to have the `get new features early` toggle on.
 
     ![Chuck Norris joke](./assets/chucknorrisjoke.png)
 
