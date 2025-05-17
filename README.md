@@ -130,6 +130,10 @@ To use the Jokes MCP Server, you need to use the URL of your server (can be eith
 1. Press `Enter`
 1. Enter a name for the server, for instance `JokesMCP`
 1. Select `User Settings` to save the MCP Server settings in your user settings
+
+    This will add an MCP Server to your `settings.json` file. It should look like this:
+    ![settings.json file](./assets/settings.png)
+
 1. Open `GitHub Copilot`
 1. Switch from `Ask` to `Agent`
 1. Make sure the `JokesMCP` server actions are enabled
