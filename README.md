@@ -151,6 +151,8 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
 
 ## 👨‍💻 Use the Jokes MCP Server in Microsoft Copilot Studio
 
+**Import the Connector**
+
 1. Go to https://make.preview.powerapps.com/customconnectors (make sure you’re in the correct environment) and click **+ New custom connector**. 
 1. Select `Import from GitHub`
 1. Select `Custom` as **Connector Type**
@@ -165,9 +167,14 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
 1. Paste your root URL (for instance `something-3000.something.devtunnels.ms` or `something.azurecontainerapps.io`) in the **Host** field
 1. Select **Create connector** 
 
-    You may see a warning and an error upon creation – it should be resolved soon - but you can ignore it for now.
+> [!WARNING]  
+> You may see a warning and an error upon creation – it should be resolved soon - but you can ignore it for now.
 
-1. Close the connector
+11. Close the connector
+
+
+**Create an agent and add the MCP server as a tool**
+
 1. Go to https://copilotstudio.preview.microsoft.com/
 1. Select the environment picker at the top right corner
 1. Select the right environment (the environment with the `Get new features early` toggle switched on)
