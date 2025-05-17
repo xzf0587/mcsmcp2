@@ -312,13 +312,13 @@ This command will show you the resources that will be deleted and then ask you t
 
 ![resources deleted](./assets/azd-down-confirmation.png)
 
-## 🗣️ Feedback
-
-Hopefully you liked the lab. Please take the time to fill in our [feedback form](https://aka.ms/mcsmcp/lab/feedback) to tell us how we can improve!
-
 ## 💡 Known issues and planned improvements
 
 There are some known issues and planned improvements for MCP in Microsoft Copilot Studio. They are listed in [this Microsoft Learn article](https://aka.ms/mcsmcpdocs#known-issues--planned-improvements).
+
+## 🗣️ Feedback
+
+Hopefully you liked the lab. Please take the time to fill in our [feedback form](https://aka.ms/mcsmcp/lab/feedback) to tell us how we can improve!
 
 ## 🚀 Contributing
 
