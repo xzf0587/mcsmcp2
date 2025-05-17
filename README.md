@@ -44,9 +44,6 @@ So, MCP and connectors are really **better together**.
 
     This will take a little while. After it's done, you will be directed to the newly created repository.
 
-> [!WARNING]  
-> After completing the steps in this lab, you will have an MCP Server running on Azure that is publicly available. Ideally, you don't want that. Make sure to run `azd down` after finishing the lab to delete all the resources from your Azure subscription.
-
 ## ⚖️ Choice: Run the server locally or deploy to Azure
 
 Now you have a choice! You either deploy the server locally - or you can deploy it to Azure.
@@ -102,6 +99,9 @@ Make sure to login to Azure Developer CLI if you haven't done that yet.
 ```azurecli
 azd auth login
 ```
+
+> [!WARNING]  
+> After running `azd up`, you will have an MCP Server running on Azure that is publicly available. Ideally, you don't want that. Make sure to run `azd down` after finishing the lab to delete all the resources from your Azure subscription. Learn how to run `azd down` by going to [this section](#-remove-the-azure-resources). 
 
 Run the following command in the terminal:
 
@@ -300,6 +300,17 @@ Now you have added the `JokesMCP` server to Visual Studio Code!
     ![Dad joke](./assets/dadjoke.png)
 
 And that was the Jokes MCP Server working in Microsoft Copilot Studio. This is also the end of the lab! Hopefully you liked the lab. Please take the time to fill in our [feedback form](https://aka.ms/mcsmcp/lab/feedback).
+
+## ❌ Remove the Azure resources
+
+To remove the Azure resources after finishing the lab, run the following command in the terminal:
+
+```azurecli
+azd down
+```
+This command will show you the resources that will be deleted and then ask you to confirm. Confirm with `y` and the resources will be deleted. This can take a couple of minutes, but at the end you will see a confirmation:
+
+![resources deleted](./assets/azd-down-confirmation.png)
 
 ## 💡 Known issues and planned improvements
 
