@@ -50,9 +50,9 @@ Now you have a choice! You either run the server locally - or you can deploy it 
 
 There are a couple of steps that you need to do for both:
 
-1. Clone this repository by running the following command: 
+1. Clone this repository by running the following command (replace `{account}` by your own GitHub account name): 
 
-    `git clone https://github.com/microsoft/mcsmcp.git`
+    `git clone https://github.com/{account}/mcsmcp.git`
 
 1. Open Visual Studio Code and open the cloned folder
 1. Open the terminal and navigate to the cloned folder
