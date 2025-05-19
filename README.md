@@ -136,7 +136,10 @@ To use the Jokes MCP Server, you need to use the URL of your server (can be eith
 
 1. Open `GitHub Copilot`
 1. Switch from `Ask` to `Agent`
-1. Make sure the `JokesMCP` server actions are enabled
+1. Make sure the `JokesMCP` server actions are selected when you select the tools icon:
+
+    ![Tools menu in GitHub Copilot](./assets/tools-menu.png)
+
 1. Ask the following question:
 
     ```text
