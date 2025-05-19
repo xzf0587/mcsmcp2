@@ -2,13 +2,13 @@
 
 Welcome to the **Microsoft Copilot Studio ❤️ MCP** lab. In this lab, you will learn how to deploy an MCP Server, and how to add it to Microsoft Copilot Studio.
 
-## What is MCP?
+## ❓ What is MCP?
 
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) is an open protocol that standardizes how applications provide context to LLMs, defined by [Anthropic](https://www.anthropic.com/). MCP provides a standardized way to connect AI models to different data sources and tools. MCP allows makers to seamlessly integrate existing knowledge servers and APIs directly into Copilot Studio.
 
 Currently, Copilot Studio only supports Tools. To learn more about current capabilities, see [aka.ms/mcsmcp](https://aka.ms/mcsmcp). There are some known issues & planned improvements. These are listed [here](#known-issues-and-planned-improvements).
 
-## MCP vs Connectors
+## 🆚 MCP vs Connectors
 
 When do you use MCP? And when do you use connectors? Will MCP replace connectors?
 
@@ -16,30 +16,27 @@ MCP servers are made available to Copilot Studio using connector infrastructure,
 
 So, MCP and connectors are really **better together**.
 
-## Prerequisites
+## ⚙️ Prerequisites
 
+- Visual Studio Code ([link](https://code.visualstudio.com/download))
+- Node v22 (ideally installed via [nvm for Windows](https://github.com/coreybutler/nvm-windows) or [nvm](https://github.com/nvm-sh/nvm))
+- Git installed ([link](https://git-scm.com/downloads))
+- Azure Developer CLI ([link](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd))
 - Azure Subscription (with payment method added)
-- Have a GitHub account and be logged in
+- GitHub account
 - Copilot Studio trial or developer account
-- Power Platform environment provisioned
+- Power Platform environment provisioned - with the following toggle on:
 
-## Lab
+![Get new features early toggle](./assets/newfeatures.png)
 
-To be able to deploy this MCP Server and use it in Microsoft Copilot Studio, you need to go through the following actions:
-
-- [Create a new GitHub repository based on the template](#create-a-new-github-repository-based-on-the-template)
-- [Deploy the Azure Web App](#deploy-the-azure-web-app)
-- [Create the Power Platform Connector](#create-the-power-platform-connector)
-- [Add the MCP Server as an action in Microsoft Copilot Studio](#add-the-mcp-server-as-an-action-in-microsoft-copilot-studio)
-
-### Create a new GitHub repository based on the template
+## ➕ Create a new GitHub repository based on the template
 
 1. Select `Use this template`
 1. Select `Create a new repository
 
     ![](./assets/usetemplate.png)
 
-1. Select the right `Owner` 
+1. Select the right `Owner` (it might already be selected when you have only one owner to choose from)
 1. Give it a `Repository name`
 1. Optionally you can give it a `Description`
 1. Select `Private`
@@ -47,174 +44,151 @@ To be able to deploy this MCP Server and use it in Microsoft Copilot Studio, you
 
     This will take a little while. After it's done, you will be directed to the newly created repository.
 
+## ⚖️ Choice: Run the server locally or deploy to Azure
+
+Now you have a choice! You either run the server locally - or you can deploy it to Azure.
+
+There are a couple of steps that you need to do for both:
+
+1. Clone this repository by running the following command (replace `{account}` by your own GitHub account name): 
+
+    `git clone https://github.com/{account}/mcsmcp.git`
+
+1. Open Visual Studio Code and open the cloned folder
+1. Open the terminal and navigate to the cloned folder
+
+### 🏃‍♀️ Run the MCP Server Locally
+
+1. Run `npm install`
+1. Run `npm run build && npm run start`
+
+    ![Terminal view after building and starting the server](./assets/vscode-terminal-run-start.png)
+
+1. Select `PORTS` at the top of the Visual Studio Code Terminal
+
+    ![Image of VS Code where the terminal is open and the PORTS tab is highlighted](./assets/vscode-terminal-ports.png)
+
+1. Select the green `Forward a Port` button
+
+    ![Image of VS Code where the PORTS tab is open and the green `Forward a Port` button is highlighted](./assets/vscode-terminal-ports-forward.png)
+
+1. Enter `3000` as the port number (this should be the same as the port number you see when you ran the command in step 5). You might be prompted to sign in to GitHub, if so please do this, since this is required to use the port forwarding feature.
+1. Right click on the row you just added and select `Port visibility` > `Public` to make the server publicly available
+1. Ctrl + click on the `Forwarded address`, which should be something like: `https://something-3000.something.devtunnels.ms`
+1. Select `Copy` on the following pop-up to copy the URL
+
+    ![View of the PORTS setup with highlighted the port, the forwarded address and the visibility](./assets/vscode-terminal-ports-setup.png) 
+
+1. Open to the browser of your choice and paste the URL in the address bar, type `/mcp` behind it and hit enter
+
+If all went well, you will see the following error message:
+
+```json
+{"jsonrpc":"2.0","error":{"code":-32000,"message":"Method not allowed."},"id":null}
+```
+
+Don't worry - this error message is nothing to be worried about!
+
+### 🌎 Deploy to Azure
+
+> [!IMPORTANT]
+> As listed in the [prerequisites](#️-prerequisites), the [Azure Developer CLI ](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd) needs to be installed on your machine for this part.
+
+Make sure to login to Azure Developer CLI if you haven't done that yet.
+
+```azurecli
+azd auth login
+```
+
 > [!WARNING]  
-> After completing the steps in this lab, you will have an MCP Server running on Azure that is publicly available. Ideally, you don't want that. Make sure to delete the Azure Web App after finishing the lab.
+> After running `azd up`, you will have an MCP Server running on Azure that is publicly available. Ideally, you don't want that. Make sure to run `azd down` after finishing the lab to delete all the resources from your Azure subscription. Learn how to run `azd down` by going to [this section](#-remove-the-azure-resources). 
 
-### Deploy the Azure Web App
+Run the following command in the terminal:
 
-1. Go to `portal.azure.com`
+```azurecli
+azd up
+```
 
-    ![Azure Portal](/assets/azureportal.png)
+For the unique environment name, enter `mcsmcplab` or something similar. Select the Azure Subscription to use and select a value for the location. After that, it will take a couple of minutes before the server has been deployed. When it's done - you should be able to go to the URL that's listed at the end and add `/mcp` to the end of that URL.
 
-1. Hover over the `Resource groups` tab and select `Create`
+![Azd deploy server output](./assets/azd-deploy-server.png)
 
-    ![Resource Group](/assets/selectResourceGroup.png)
+You should again see the following error:
 
-1. Click the `Subscription` dropdown and select your subscription from the list
+```json
+{"jsonrpc":"2.0","error":{"code":-32000,"message":"Method not allowed."},"id":null}
+```
 
-    ![Select Subscription](/assets/selectSubscription.png)
+## 👨‍💻 Use the Jokes MCP Server in Visual Studio Code / GitHub Copilot
 
-1. Click in the `Resource group` name text box and type a resource group name such as "jokesgrp"
+To use the Jokes MCP Server, you need to use the URL of your server (can be either your devtunnel URL or your deployed Azure Container App) with the `/mcp` part at the end and add it as an MCP Server in Visual Studio Code.
 
-    ![Resource Group Name](/assets/resourcegrpname.png)
+1. Press either `ctrl` + `shift` + `P` (Windows/Linux) or `cmd` + `shift` + `P` (Mac) and type `MCP`
+1. Select `MCP: Add Server...`
+1. Select `HTTP (HTTP or Server-Sent Events)`
+1. Paste the URL of your server in the input box (make sure `/mcp` in the end is included)
+1. Press `Enter`
+1. Enter a name for the server, for instance `JokesMCP`
+1. Select `User Settings` to save the MCP Server settings in your user settings
 
-1. Select the `Region` dropdown choose the region closest to you
+    This will add an MCP Server to your `settings.json` file. It should look like this:
+    ![settings.json file](./assets/settings.png)
 
-    ![Resource Group Region](/assets/resourcegrpregion.png)
+1. Open `GitHub Copilot`
+1. Switch from `Ask` to `Agent`
+1. Make sure the `JokesMCP` server actions are selected when you select the tools icon:
 
-1. Click `Review + create`
+    ![Tools menu in GitHub Copilot](./assets/tools-menu.png)
 
-    ![Review and create](/assets/resourcegrpreview.png)
+1. Ask the following question:
 
-1. Click `Create`
+    ```text
+    Get a chuck norris joke from the Dev category
+    ```
 
-    ![Create](/assets/resourcegrpcreate.png)
+This should give you a response like this:
 
-1. Select `Go to resource group`
+![Screenshot of question to provide a joke from the dev category and the answer from GitHub Copilot](./assets/github-copilot-get-joke.png)
 
-    ![Go to resource](/assets/gotoresource.png)
+Now you have added the `JokesMCP` server to Visual Studio Code!
 
-1. Select `Create`
+## 👨‍💻 Use the Jokes MCP Server in Microsoft Copilot Studio
 
-    ![Create](/assets/inresourcegrpcreate.png)
+**Import the Connector**
 
-1. Click into the `search box`
-
-    ![Search](/assets/searchmarketplace.png)
-
-1. Type `web app`
-
-1. Select the `Create button` in the Web App search result
-
-    ![Search Results](/assets/createwebapp1.png)
-
-1. Select `Web App`
-
-    ![Create Web App](/assets/createwebapp2.png)
-
-1. Select the `Name` text input and put in a name for the web app, such as "wegotjokes"
-
-    ![Web App Name](/assets/webappname.png)
-
-1. Select the `Runtime stack` dropdown and choose `Node 22 LTS` 
-
-    ![Web App Runtime](/assets/selectruntime.png)
-
-1. Select the `Region` dropdown and choose the region closest to you
-
-    ![Region](/assets/webappselectregion.png)
-
-1. Click `Review + create`
-
-    ![Review](/assets/webappreview.png)
-
-1. Click `Create`
-
-    ![Create](/assets/webappcreate.png)
-
-1. Click `Refresh` to update your deployment progress
-
-    ![Refresh](/assets/webapprefresh.png)
-
-1. Once deployment is complete, select `Go to resource`
-
-    ![Go to resource](/assets/webappgotoresource.png)
-
-1. Expand the `Deployment` tab
-
-    ![Deployment tab](/assets/webappdeployment.png)
-
-1. Click `Deployment Center`
-
-    ![Deployment center](/assets/webappdeployctr.png)
-
-1. Click the `Source` dropdown and select `GitHub` 
-
-    ![Choose source](/assets/webappsource.png)
-
-1. Select `Authorize`
-
-    ![Authorize](/assets/deployauthorize.png)
-
+1. Go to https://make.preview.powerapps.com/customconnectors (make sure you’re in the correct environment) and click **+ New custom connector**. 
+1. Select `Import from GitHub`
+1. Select `Custom` as **Connector Type**
+1. Select `dev` as the **Branch**
+1. Select `MCP-Streamable-HTTP` as the **Connector**
 1. Select `Continue`
 
-    ![Continue](/assets/githubauthcontinue.png)
+    ![View of the import from GitHub section](./assets/import-from-github.png)
 
-1. Select `Authorize AzureAppService`
+1. Change the **Connector Name** to something appropriate, like for instance `Jokes MCP` 
+1. Change the **Description** to something appropriate
+1. Paste your root URL (for instance `something-3000.something.devtunnels.ms` or `something.azurecontainerapps.io`) in the **Host** field
+1. Select **Create connector** 
 
-    ![Authorize](/assets/githubauthappservice.png)
+> [!WARNING]  
+> You may see a warning and an error upon creation – it should be resolved soon - but you can ignore it for now.
 
-1. Click the `Organization` dropdown and choose your organization
+11. Close the connector
 
-    ![Org Selection](/assets/githuborg.png)
 
-1. Click on the `Repository` dropdown and choose the GitHub repository you created [earlier](#create-a-new-github-repository-based-on-the-template) from the list
+**Create an agent and add the MCP server as a tool**
 
-    ![Repo Selection](/assets/githubrepo.png)
-
-1. Click the `Branch` dropdown and choose your branch
-
-    ![Select Branch](/assets/githubbranch.png)
-
-1. Keep everything else default and select `Save`
-
-    ![Save](/assets/githubsave.png)
-
-1. Click `Refresh` to update the deployment status
-
-    ![Refresh](/assets/githubrefresh.png)
-
-1. Verify that the deployment is complete
-
-    ![Deploy done](/assets/deploydone.png)
-
-### Create the Power Platform Connector
-
-1. Go to [https://make.powerapps.com/](https://make.powerapps.com/)
-1. Select `More` in the left menu
-1. Select the `Discover all` button
-1. Under Data, select the `pin icon` next to `Custom connectors` to pin it to the left menu
-1. Select `Custom connectors` in the left menu
-1. Select `New custom connector`
-1. Select `Create from blank`
-
-    ![](./assets/newconnector.png)
-
-1. Give the connector a name (for instance `JokesMCP`)
-1. Select the blue `Continue` button
-1. Select the `Swagger editor` toggle
- 
-    ![](./assets/swaggereditor.png)
-
-1. Copy the yaml code from [here](./assets/connector.yml) and replace the code in the Swagger editor
-1. In the Swagger editor, replace `dummyurl.azurewebsites.net` with the URL of the web app you created [earlier](#deploy-the-azure-web-app). Make sure to remove `https://` and everything after `azurewebsites.net`
-1. Select `Create connector` to create the connector
-
-### Add the MCP Server as an action in Microsoft Copilot Studio
-
-Now you have an MCP Server running in Azure, and a connector available in the Power Platform. This step is about creating an agent in Microsoft Copilot Studio and adding the MCP Server to the agent.
-
-1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
+1. Go to https://copilotstudio.preview.microsoft.com/
 1. Select the environment picker at the top right corner
-1. Select the right environment
+1. Select the right environment (the environment with the `Get new features early` toggle switched on)
 1. Select `Create` in the left navigation
 1. Select the blue `New agent` button
 
     ![New agent](./assets/newagent.png)
 
-1. Select `Skip to configure` on the top right
+1. Select the `Configure` tab on the left
 
-    ![Skip to configure](./assets/skiptoconfigure.png)
+    ![Configure](./assets/configure.png)
 
 1. Change the name to `Jokester`
 1. Add the following `Description`
@@ -239,9 +213,9 @@ Now you have an MCP Server running in Azure, and a connector available in the Po
     * Be responsive, witty, and quick.
     ```
 
-1. Select `Create` on the top right
+1. Select `Continue` on the top right
 
-    ![Create agent](./assets/createagent.png)
+    ![Click continue to create agent](./assets/continue.png)
 
 1. Enable Generative AI `Orchestration`
 
@@ -251,34 +225,31 @@ Now you have an MCP Server running in Azure, and a connector available in the Po
 
     ![Turn off general knowledge](./assets/turnoffgeneralknowledge.png)
 
-1. Select `Actions` in the top menu
+1. Select `Tools` in the top menu
  
-    ![Actions](./assets/actions.png)
+    ![Tools](./assets/tools.png)
 
-1. Select `Add an action`
+1. Select `Add a tool`
 
-    ![Add an action](./assets/addanaction.png)
+    ![Add a tool](./assets/addatool.png)
 
-1. Search for the name (in this case, `jokes`) of the connector you created [earlier](#create-the-power-platform-connector) (see number 1 in the screenshot below)
-1. Select the `Jokes MCP server` (see number 2 in the screenshot below)
+1. Select the `Model Context Protocol` tab to filter all the Model Context Protocol Servers (see number 1 in the screenshot below)
 
-    ![Search for and select the action](./assets/addaction.png)
+1. Select the `Jokes MCP` server (see number 2 in the screenshot below)
 
-1. Wait for the connection to be created and select `Next` when it's done
+    ![MCP](./assets/mcpsteps.png)
 
-    ![Action and connection](./assets/actionconnection.png)
+1. Create a new connection by selecting the `Not connected` and **Create new Connection**
 
-1. Change the `Description for the agent to know when to use this action` to the following text:
+    ![Action and connection](./assets/create-connection-action.png)
 
-    ```text
-    Trigger this action when a user asks for a joke. It can provide Chuck Norris jokes, Dad jokes and Yo Mama jokes.
-    ```
-  
-    Leave the rest as default, like for instance end user authentication, where you will learn more about in a minute.
+1. Select `Create`
 
-1. Select `Add action` to add the action to the agent
+    ![Create connection](./assets/create-connection-action-create.png)
 
-    ![Add action](./assets/addactionend.png)
+1. Select `Add to agent` to add the tool to the agent
+
+    ![Add tool to agent](./assets/add-tool-to-agent.png)
 
 1. Select the `refresh icon` in the `Test your agent` pane
 
@@ -324,7 +295,7 @@ Now you have an MCP Server running in Azure, and a connector available in the Po
     Can I get a Chuck Norris joke?
     ```
 
-    This will now show a Chuck Norris joke - instead of the additional permissions.
+    This will now show a Chuck Norris joke - instead of the additional permissions. If that's not the case - you probably have missed the [prerequisite](#️-prerequisites) that the environment needs to have the `get new features early` toggle on.
 
     ![Chuck Norris joke](./assets/chucknorrisjoke.png)
 
@@ -338,56 +309,28 @@ Now you have an MCP Server running in Azure, and a connector available in the Po
 
     ![Dad joke](./assets/dadjoke.png)
 
-1. In the `Test your agent` pane send the following message:
+And that was the Jokes MCP Server working in Microsoft Copilot Studio.
 
-    ```text
-    Can I get a Yo Mama joke?
-    ```
+## ❌ Remove the Azure resources
 
-    This will now show a Yo Mama joke.
+To remove the Azure resources after finishing the lab, run the following command in the terminal:
 
-    ![Yo Mama joke](./assets/yomamajoke.png)
+```azurecli
+azd down
+```
+This command will show you the resources that will be deleted and then ask you to confirm. Confirm with `y` and the resources will be deleted. This can take a couple of minutes, but at the end you will see a confirmation:
 
-And that was the Jokes MCP Server working in Microsoft Copilot Studio. This is also the end of the lab! Hopefully you liked the lab. Please take the time to fill in our [feedback form](https://aka.ms/mcsmcp/lab/feedback).
+![resources deleted](./assets/azd-down-confirmation.png)
 
-## Jokes MCP Server details
-
-This is a [MCP](https://modelcontextprotocol.io/introduction) server built on the [TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk).
-
-With this MCP Server, you will able to fetch jokes from the following websites:
-- [chucknorris.io](https://api.chucknorris.io/)
-- [icanhazdadjoke.com](https://icanhazdadjoke.com/)
-- [yomama-jokes.com](https://www.yomama-jokes.com)
-
-If you want to run the server locally, make sure to run `npm install` in the root of the repository.
-
-After that you can run `npm run build` to build the server and `npm start` to start the server.
-
-## Tools
-
-The following tools are included:
-
-### get-chuck-joke
-
-This tool retrieves a random Chuck Norris Joke from [chucknorris.io](https://api.chucknorris.io/).
-
-### get-chuck-categories
-
-This tool retrieves the available categories from [chucknorris.io](https://api.chucknorris.io/).
-
-### get-dad-joke
-
-This tool retrieves a random Dad Joke from [icanhazdadjoke.com](https://icanhazdadjoke.com/).
-
-### get-yo-mama-joke
-
-This tool retrieves a random Yo Mama Joke from [yomama-jokes.com](https://www.yomama-jokes.com).
-
-## Known issues and planned improvements
+## 💡 Known issues and planned improvements
 
 There are some known issues and planned improvements for MCP in Microsoft Copilot Studio. They are listed in [this Microsoft Learn article](https://aka.ms/mcsmcpdocs#known-issues--planned-improvements).
 
-## Contributing
+## 🗣️ Feedback
+
+Hopefully you liked the lab. Please take the time to fill in our [feedback form](https://aka.ms/mcsmcp/lab/feedback) to tell us how we can improve!
+
+## 🚀 Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
@@ -401,10 +344,10 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## Trademarks
+## ™️ Trademarks
 
 This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
 trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
+[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.

@@ -20,3 +20,8 @@ dist/
 # Logs
 logs/
 *.log
+.azure
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+node_modules/
